@@ -1,4 +1,26 @@
-function ProductList({ products, handleClick }) {
+import { useContext } from "react";
+import CartContext from "../context/CartContext";
+
+function ProductList({ products }) {
+  const { state, dispatch } = useContext(CartContext);
+
+  const handleClick = (product) => {
+    if (state.some((element) => element.id === product.id)) {
+      dispatch({
+        type: "INCREASE_QUANTITY",
+        payload: product.id,
+      });
+    } else {
+      dispatch({
+        type: "ADD_PRODUCT",
+        payload: {
+          ...product,
+          quantity: 1,
+        },
+      });
+    }
+  };
+
   return (
     <>
       <h2>Products</h2>

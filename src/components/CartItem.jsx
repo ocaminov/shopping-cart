@@ -1,4 +1,30 @@
-function CartItem({ product, handleDecrease, handleIncrease, handleRemove }) {
+import { useContext } from "react";
+import CartContext from "../context/CartContext";
+
+function CartItem({ product }) {
+  const { dispatch } = useContext(CartContext);
+
+  const handleIncrease = (id) => {
+    dispatch({
+      type: "INCREASE_QUANTITY",
+      payload: id,
+    });
+  };
+
+  const handleDecrease = (id) => {
+    dispatch({
+      type: "DECREASE_QUANTITY",
+      payload: id,
+    });
+  };
+
+  const handleRemove = (id) => {
+    dispatch({
+      type: "DELETE_PRODUCT",
+      payload: id,
+    });
+  };
+
   return (
     <li>
       {product.name} - {product.price} -{" "}

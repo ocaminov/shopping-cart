@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import CartContext from "../context/CartContext";
+import useCart from "../hooks/useCart";
 
 function ProductList({ products }) {
-  const { state, dispatch } = useContext(CartContext);
+  const { state, dispatch } = useCart();
 
   const handleClick = (product) => {
     if (state.some((element) => element.id === product.id)) {

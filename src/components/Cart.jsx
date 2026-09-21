@@ -1,10 +1,10 @@
 import ProductList from "./ProductList";
 import CartItem from "./CartItem";
-import { useContext } from "react";
-import CartContext from "../context/CartContext";
+
+import useCart from "../hooks/useCart";
 
 export default function Cart({ products }) {
-  const { state, dispatch } = useContext(CartContext);
+  const { state, dispatch } = useCart();
 
   const total = state.reduce((total, product) => {
     return total + product.price * product.quantity;

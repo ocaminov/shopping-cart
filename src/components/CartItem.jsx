@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import CartContext from "../context/CartContext";
+import useCart from "../hooks/useCart";
 
 function CartItem({ product }) {
-  const { dispatch } = useContext(CartContext);
+  const { dispatch } = useCart();
 
   const handleIncrease = (id) => {
     dispatch({

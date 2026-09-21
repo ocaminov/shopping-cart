@@ -1,32 +1,24 @@
 import {
-  DECREASE_QUANTITY,
-  DELETE_PRODUCT,
-  INCREASE_QUANTITY,
-} from "../constants/cartActions";
+  decreaseQuantity,
+  deleteProduct,
+  increaseQuantity,
+} from "../actions/cartActions";
+
 import useCart from "../hooks/useCart";
 
 function CartItem({ product }) {
   const { dispatch } = useCart();
 
   const handleIncrease = (id) => {
-    dispatch({
-      type: INCREASE_QUANTITY,
-      payload: id,
-    });
+    dispatch(increaseQuantity(id));
   };
 
   const handleDecrease = (id) => {
-    dispatch({
-      type: DECREASE_QUANTITY,
-      payload: id,
-    });
+    dispatch(decreaseQuantity(id));
   };
 
   const handleRemove = (id) => {
-    dispatch({
-      type: DELETE_PRODUCT,
-      payload: id,
-    });
+    dispatch(deleteProduct(id));
   };
 
   return (

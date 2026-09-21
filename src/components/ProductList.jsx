@@ -1,4 +1,5 @@
-import { ADD_PRODUCT, INCREASE_QUANTITY } from "../constants/cartActions";
+import { addProduct, increaseQuantity } from "../actions/cartActions";
+
 import useCart from "../hooks/useCart";
 
 function ProductList({ products }) {
@@ -6,18 +7,14 @@ function ProductList({ products }) {
 
   const handleClick = (product) => {
     if (state.some((element) => element.id === product.id)) {
-      dispatch({
-        type: INCREASE_QUANTITY,
-        payload: product.id,
-      });
+      dispatch(increaseQuantity(product.id));
     } else {
-      dispatch({
-        type: ADD_PRODUCT,
-        payload: {
+      dispatch(
+        addProduct({
           ...product,
           quantity: 1,
-        },
-      });
+        }),
+      );
     }
   };
 

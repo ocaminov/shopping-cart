@@ -2,6 +2,7 @@ import ProductList from "./ProductList";
 import CartItem from "./CartItem";
 
 import useCart from "../hooks/useCart";
+import { CLEAR_CART } from "../constants/cartActions";
 
 export default function Cart({ products }) {
   const { state, dispatch } = useCart();
@@ -27,9 +28,7 @@ export default function Cart({ products }) {
       </ul>
       <p>Items: {items}</p>
       <p>Total: ${total}</p>
-      <button onClick={() => dispatch({ type: "CLEAR_CART" })}>
-        Clear Cart
-      </button>
+      <button onClick={() => dispatch({ type: CLEAR_CART })}>Clear Cart</button>
     </>
   );
 }

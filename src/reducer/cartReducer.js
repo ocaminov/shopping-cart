@@ -1,10 +1,18 @@
+import {
+  ADD_PRODUCT,
+  CLEAR_CART,
+  DECREASE_QUANTITY,
+  DELETE_PRODUCT,
+  INCREASE_QUANTITY,
+} from "../constants/cartActions";
+
 function cartReducer(state, action) {
   switch (action.type) {
-    case "ADD_PRODUCT":
+    case ADD_PRODUCT:
       return [...state, action.payload];
-    case "DELETE_PRODUCT":
+    case DELETE_PRODUCT:
       return state.filter((product) => product.id !== action.payload);
-    case "INCREASE_QUANTITY":
+    case INCREASE_QUANTITY:
       return state.map((product) => {
         if (product.id === action.payload) {
           return {
@@ -14,7 +22,7 @@ function cartReducer(state, action) {
         }
         return product;
       });
-    case "DECREASE_QUANTITY":
+    case DECREASE_QUANTITY:
       const productFound = state.find(
         (product) => product.id === action.payload,
       );
@@ -35,7 +43,7 @@ function cartReducer(state, action) {
         return state.filter((product) => product.id !== action.payload);
       }
 
-    case "CLEAR_CART":
+    case CLEAR_CART:
       return [];
 
     default:
